@@ -42,6 +42,8 @@ public class Main {
         System.out.println(z8);
         System.out.println(sportage);
         System.out.println(avante);
+        Car dsa = new Car("","",0,"",0,"");
+        System.out.println(dsa);
 
     }
 }
