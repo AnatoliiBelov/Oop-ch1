@@ -16,26 +16,28 @@ public class Car {
             this.year = 2000;
         }
     }
-public Car(){
-    if (brand == "" || brand == null) {
-        brand = "default";
+
+    public Car() {
+        if (brand == "" || brand == null) {
+            brand = "default";
+        }
+        if (model == "" || model == null) {
+            model = "default";
+        }
+        if (contry == "" || contry == null) {
+            contry = "default";
+        }
+        if (engineVolume <= 0) {
+            engineVolume = 1.5;
+        }
+        if (color == "" || color == null) {
+            color = "белый";
+        }
+        if (year <= 0) {
+            year = 2000;
+        }
     }
-    if (model == "" || model == null) {
-        model = "default";
-    }
-    if (contry == "" || contry == null) {
-        contry = "default";
-    }
-    if (engineVolume <= 0) {
-        engineVolume = 1.5;
-    }
-    if (color == "" || color == null) {
-        color = "белый";
-    }
-    if (year <= 0) {
-        year = 2000;
-    }
-}
+
     public Car(String brand, double engineVolume, int year) {
 
         this(brand, "default", engineVolume, "белый", year, "default");
