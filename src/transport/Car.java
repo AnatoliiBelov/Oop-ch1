@@ -1,21 +1,17 @@
 package transport;
 
 
-public class Car {
-    private final String brand;
-    private final String model;
+public class Car extends Transport {
+
     private double engineVolume;
-    private String color;
-    private final int year;
-    private final String contry;
+
     private String transmission;
     private final String bodyType;
     private String registrationNumber;
     private final int numberOfSeats;
     private boolean tiresType;//false-летняя резина, true-зимняя
-    public String DEFAULT_OPTIONS_FOR_BRAND_MODEL_COUNTRY = "default";
-    public String DEFAULT_OPTIONS_FOR_COLOR = "белый";
-    public int DEFAULT_OPTIONS_FOR_YEAR = 2000;
+
+
     public String DEFAULT_OPTIONS_FOR_TRANSMISSION = "механическая";
     public String DEFAULT_OPTIONS_FOR_BODY_TYPE = "седан";
     public String DEFAULT_OPTIONS_FOR_BODY_REGISTRATION_NUMBER = "х000хх000";
@@ -42,52 +38,34 @@ public class Car {
         }
     }
 
+    public Car(String brand, String model, int year, String contry, String color, int maxSpeed, double engineVolume, String transmission, String bodyType, String registrationNumber, int numberOfSeats, boolean tiresType) {
+        super(brand, model, year, contry, color, maxSpeed);
 
-    public Car(String brand, String model, double engineVolume, String color, int year, String contry, String transmission, String bodyType, String registrationNumber, int numberOfSeats, boolean tiresType) {
-        if (brand.isBlank()) {
-            brand = DEFAULT_OPTIONS_FOR_BRAND_MODEL_COUNTRY;
-        }
-        if (brand.isBlank()) {
-            model = DEFAULT_OPTIONS_FOR_BRAND_MODEL_COUNTRY;
-        }
-        if (brand.isBlank()) {
-            contry = DEFAULT_OPTIONS_FOR_BRAND_MODEL_COUNTRY;
-        }
         if (engineVolume <= 0) {
             engineVolume = 1.5;
         }
-        if (brand.isBlank()) {
-            color = DEFAULT_OPTIONS_FOR_COLOR;
-        }
-        if (year <= 0) {
-            year = DEFAULT_OPTIONS_FOR_YEAR;
-        }
-        if (brand.isBlank()) {
+
+
+        if (transmission.isBlank()) {
             transmission = DEFAULT_OPTIONS_FOR_TRANSMISSION;
         }
-        if (brand.isBlank()) {
+        if (bodyType.isBlank()) {
             bodyType = DEFAULT_OPTIONS_FOR_BODY_TYPE;
         }
-        if (brand.isBlank()) {
+        if (registrationNumber.isEmpty()) {
             registrationNumber = DEFAULT_OPTIONS_FOR_BODY_REGISTRATION_NUMBER;
         }
         if (numberOfSeats <= 0) {
             numberOfSeats = DEFAULT_OPTIONS_FOR_BODY_NUMBER_OF_SEATS;
         }
-
-
-        this.brand = brand;
-        this.model = model;
         this.engineVolume = engineVolume;
-        this.color = color;
-        this.year = year;
-        this.contry = contry;
         this.transmission = transmission;
         this.bodyType = bodyType;
         this.registrationNumber = registrationNumber;
         this.numberOfSeats = numberOfSeats;
-
+        this.tiresType = tiresType;
     }
+
 
     public void changeOfTires(int month) {
 
@@ -103,28 +81,8 @@ public class Car {
     }
 
 
-    public String getBrand() {
-        return brand;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
     public double getEngineVolume() {
         return engineVolume;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public String getContry() {
-        return contry;
     }
 
     public String getTransmission() {
@@ -151,9 +109,6 @@ public class Car {
         this.engineVolume = engineVolume;
     }
 
-    public void setColor(String color) {
-        this.color = color;
-    }
 
     public void setTransmission(String transmission) {
         this.transmission = transmission;
@@ -169,6 +124,6 @@ public class Car {
 
     @Override
     public String toString() {
-        return brand + " " + model + ", " + year + " год выпуска, " + color + " цвет кузова, сборка в " + contry + ", объем двигателя " + engineVolume + " л.," + "коробка передач-" + transmission + ", Тип кузова-" + bodyType + ", регистрационный номер " + registrationNumber + ", количество мест-" + numberOfSeats + ", тип резины-" + tiresType + ", пояснение:false-летняя резина, true-зимняя";
+        return getBrand() + " " + getModel() + ", " + getYear() + " год выпуска, " + getMaxSpeed() + "-максимальная скорость, " + getColor() + " цвет кузова, сборка в " + getContry() + ", объем двигателя " + engineVolume + " л.," + "коробка передач-" + transmission + ", Тип кузова-" + bodyType + ", регистрационный номер " + registrationNumber + ", количество мест-" + numberOfSeats + ", тип резины-" + tiresType + ", пояснение:false-летняя резина, true-зимняя";
     }
 }
