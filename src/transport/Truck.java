@@ -1,27 +1,28 @@
 package transport;
 
-public class Bus extends Transport <DriverBusD> implements Competing{
+public class Truck extends Transport <DriverTruckС>implements Competing{
 
-
-    public Bus(String brand, String model, double engineVolume) {
+    public Truck(String brand, String model, double engineVolume) {
         super(brand, model, engineVolume);
     }
+
 
     @Override
     public void start() {
         System.out.println("завести двигатель");
-        System.out.println("провести специальные процедуры для автобусов");
+        System.out.println("провести специальные процедуры для грузовиков");
         System.out.println("проверить все системы авто");
         System.out.println("Нажать сцепление и газ");
+
     }
 
     @Override
     public void finish() {
         System.out.println("Полная остановка авто");
-        System.out.println("провести специальные процедуры для автобусов");
-
+        System.out.println("провести специальные процедуры для грузовиков");
 
     }
+
     @Override
     public void goToPitStop() {
         System.out.println("найти поломку");
@@ -40,4 +41,7 @@ public class Bus extends Transport <DriverBusD> implements Competing{
     public void fixMaxSpeed(double maxSpeed) {
         System.out.println("максимальная скорость: " + maxSpeed);
     }
+
+
+
 }
