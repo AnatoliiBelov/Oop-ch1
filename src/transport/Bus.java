@@ -1,10 +1,10 @@
 package transport;
 
-public class Bus extends Transport <DriverBusD> implements Competing{
+public class Bus extends Transport<DriverBusD> implements Competing {
 
 
-    public Bus(String brand, String model, double engineVolume) {
-        super(brand, model, engineVolume);
+    public Bus(String brand, String model, double engineVolume, DriverBusD driverBusD) {
+        super(brand, model, engineVolume, driverBusD);
     }
 
     @Override
@@ -22,6 +22,7 @@ public class Bus extends Transport <DriverBusD> implements Competing{
 
 
     }
+
     @Override
     public void goToPitStop() {
         System.out.println("найти поломку");
@@ -31,7 +32,7 @@ public class Bus extends Transport <DriverBusD> implements Competing{
 
     @Override
     public void fixBestLapTime(String time) {
-        System.out.println("лучшее время круга: "+time);
+        System.out.println("лучшее время круга: " + time);
 
 
     }
@@ -40,4 +41,5 @@ public class Bus extends Transport <DriverBusD> implements Competing{
     public void fixMaxSpeed(double maxSpeed) {
         System.out.println("максимальная скорость: " + maxSpeed);
     }
+
 }

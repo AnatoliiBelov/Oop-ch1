@@ -1,6 +1,6 @@
 package transport;
 
-public class DriverBusD extends Driver{
+public class DriverBusD extends Driver {
     public DriverBusD(String fullName, boolean driversLicence, int driverExperience) {
         super(fullName, driversLicence, driverExperience);
     }
@@ -11,7 +11,7 @@ public class DriverBusD extends Driver{
             System.out.println("завести двигатель");
             System.out.println("проверить все системы авто");
             System.out.println("Нажать сцепление и газ");
-            System.out.println("Водитель "+getFullName()+" категории D тронулся в путь");
+            System.out.println("Водитель " + getFullName() + " категории D тронулся в путь");
         }
 
     }
@@ -19,7 +19,7 @@ public class DriverBusD extends Driver{
     @Override
     public void finish() {
         {
-            System.out.println("Водитель "+getFullName()+" категории D остановился");
+            System.out.println("Водитель " + getFullName() + " категории D остановился");
 
         }
     }
@@ -27,7 +27,7 @@ public class DriverBusD extends Driver{
     @Override
     public void refuel() {
         {
-            System.out.println("Водитель "+getFullName()+" категории D заправил авто");
+            System.out.println("Водитель " + getFullName() + " категории D заправил авто");
 
         }
 

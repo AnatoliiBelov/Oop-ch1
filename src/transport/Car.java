@@ -1,7 +1,7 @@
 package transport;
 
 
-public class Car extends Transport <DriverCarB>implements Competing{
+public class Car extends Transport<DriverCarB> implements Competing {
 
 //    private double engineVolume;
 //
@@ -38,8 +38,8 @@ public class Car extends Transport <DriverCarB>implements Competing{
 //        }
 //    }
 
-    public Car(String brand, String model,  double engineVolume) {
-        super(brand, model, engineVolume );
+    public Car(String brand, String model, double engineVolume, DriverCarB driverCarB) {
+        super(brand, model, engineVolume, driverCarB);
 
 //        if (engineVolume <= 0) {
 //            engineVolume = 1.5;
@@ -79,6 +79,7 @@ public class Car extends Transport <DriverCarB>implements Competing{
         System.out.println("Полная остановка авто");
         System.out.println("провести специальные процедуры легковых авто");
     }
+
     @Override
     public void goToPitStop() {
         System.out.println("найти поломку");
@@ -88,7 +89,7 @@ public class Car extends Transport <DriverCarB>implements Competing{
 
     @Override
     public void fixBestLapTime(String time) {
-        System.out.println("лучшее время круга: "+time);
+        System.out.println("лучшее время круга: " + time);
 
 
     }
@@ -97,6 +98,7 @@ public class Car extends Transport <DriverCarB>implements Competing{
     public void fixMaxSpeed(double maxSpeed) {
         System.out.println("максимальная скорость: " + maxSpeed);
     }
+
 
 //
 //    public void changeOfTires(int month) {
@@ -151,6 +153,8 @@ public class Car extends Transport <DriverCarB>implements Competing{
 //    }
 //
 //    public void setTiresType(boolean tiresType) {
+
+
 //        this.tiresType = tiresType;
 //    }
 

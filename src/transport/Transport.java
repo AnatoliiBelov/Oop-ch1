@@ -1,27 +1,32 @@
 package transport;
 
-public abstract class  Transport  <A extends Driver> implements Competing {
+public abstract class Transport<T extends Driver> implements Competing {
     private final String brand;
     private final String model;
     private final double engineVolume;
-    public double DEFAULT_OPTIONS_FOR_ENGINE_VOLUME = 1.5;
+    public final double DEFAULT_OPTIONS_FOR_ENGINE_VOLUME = 1.5;
 
-//    private final int year;
+    //    private final int year;
 //    private final String contry;
 //    private String color;
 //    private int maxSpeed;
-    public String DEFAULT_OPTIONS_FOR_BRAND_MODEL_COUNTRY = "default";
+    public final String DEFAULT_OPTIONS_FOR_BRAND_MODEL_COUNTRY = "default";
+    private final T driver;
 
 //    public int DEFAULT_OPTIONS_FOR_YEAR = 2000;
 //    public int DEFAULT_OPTIONS_FOR_MAX_SPEED = 180;
 //    public String DEFAULT_OPTIONS_FOR_COLOR = "белый";
 
 
-    public Transport(String brand, String model, double engineVolume) {
-        if (brand.isBlank()) {
+    public T getDriver() {
+        return driver;
+    }
+
+    public Transport(String brand, String model, double engineVolume, T driver) {
+        if (brand.isBlank() || brand == null) {
             brand = DEFAULT_OPTIONS_FOR_BRAND_MODEL_COUNTRY;
         }
-        if (model.isBlank()) {
+        if (model.isBlank() || model == null) {
             model = DEFAULT_OPTIONS_FOR_BRAND_MODEL_COUNTRY;
         }
         if (engineVolume <= 0) {
@@ -41,7 +46,8 @@ public abstract class  Transport  <A extends Driver> implements Competing {
 //        }
         this.brand = brand;
         this.model = model;
-        this.engineVolume=engineVolume;
+        this.engineVolume = engineVolume;
+        this.driver = driver;
 //        this.year = year;
 //        this.contry = contry;
 //        this.color = color;
@@ -49,7 +55,9 @@ public abstract class  Transport  <A extends Driver> implements Competing {
     }
 
     public abstract void start();
+
     public abstract void finish();
+
     public String getBrand() {
         return brand;
     }
@@ -87,6 +95,6 @@ public abstract class  Transport  <A extends Driver> implements Competing {
 
     @Override
     public String toString() {
-        return getBrand() + " " + getModel() + ", " +"объём двигателя: "+getEngineVolume();
+        return getBrand() + " " + getModel() + ", " + "объём двигателя: " + getEngineVolume();
     }
 }
