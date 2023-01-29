@@ -104,7 +104,7 @@ public class Bus extends Transport<DriverBusD> implements Competing {
 
     @Override
     public void fixMaxSpeed(double maxSpeed) {
-        System.out.println("максимальная скорость: " + maxSpeed);
+        System.out.println("максимальная скорость:  " + maxSpeed);
     }
 
 }
