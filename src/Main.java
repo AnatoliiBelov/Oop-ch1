@@ -54,7 +54,9 @@ public class Main {
         printInfo(man);
         printInfo(volvo);
 
-
+maz.printType();
+maz.setNumberOfSeats(Bus.numberOfSeats.SMALL);
+maz.printType();
     }
 
     public static void printInfo(Transport<?> transport) {

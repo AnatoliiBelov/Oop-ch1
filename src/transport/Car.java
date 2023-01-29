@@ -2,6 +2,33 @@ package transport;
 
 
 public class Car extends Transport<DriverCarB> implements Competing {
+    bodyType bodyType;
+    public enum bodyType {
+        SEDAN("Седан"),
+        HATCHBACK("Хетчбек"),
+        COUPE("Купе"),
+        STATION_WAGON("Универсал"),
+        SUV("Внедорожник"),
+        CROSSOVER("Кроссовер"),
+        PICKUP_TRUCK("Пикап"),
+        VAN("Фургон"),
+        MINIVAN("Минивэн");
+
+        private String bodyTypeOnRussian;
+
+        @Override
+        public String toString() {
+            return "Тип кузова: " + bodyTypeOnRussian;
+        }
+
+        bodyType(String bodyTypeOnRussian) {
+            this.bodyTypeOnRussian = bodyTypeOnRussian;
+        }
+
+        public String getBodyTypeOnRussian() {
+            return bodyTypeOnRussian;
+        }
+    }
 
 //    private double engineVolume;
 //
@@ -66,6 +93,20 @@ public class Car extends Transport<DriverCarB> implements Competing {
 //        this.tiresType = tiresType;
     }
 
+    public Car.bodyType getBodyType() {
+        return bodyType;
+    }
+
+    public void setBodyType(Car.bodyType bodyType) {
+        this.bodyType = bodyType;
+    }
+    @Override
+    public void printType() {
+        if (bodyType==null){
+            System.out.println("Данных по транспортному средству недостаточно");
+        }else {
+            System.out.println(bodyType);}
+    }
     @Override
     public void start() {
         System.out.println("завести двигатель");
