@@ -59,6 +59,12 @@ public class Bus extends Transport<DriverBusD> implements Competing {
         super(brand, model, engineVolume, driverBusD);
     }
 
+    @Override
+    public void passDiagnostics() throws Exception {
+        throw new Exception("Автобусы не проходят диагностику");
+
+    }
+
     public Bus.numberOfSeats getNumberOfSeats() {
         return numberOfSeats;
     }

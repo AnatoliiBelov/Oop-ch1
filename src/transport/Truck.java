@@ -47,6 +47,11 @@ Double minTonnage;
         super(brand, model, engineVolume, driverTruckС);
     }
 
+    @Override
+    public void passDiagnostics() {
+        System.out.println("Грузовик "+Truck.this.getBrand()+" "+Truck.this.getModel()+" проходит диагностику");
+    }
+
     public Truck.tonnage getTonnage() {
         return tonnage;
     }

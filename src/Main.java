@@ -2,7 +2,7 @@ import transport.*;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws DriverCannotBeWithoutADriversLicense {
 
 //        Car granta = new Car("Lada", "Granta", 2015, "России", "желтый", 200, 1.7, "механическая", "седан", "Н230ЕР777", 5, false);
 //        Car a8 = new Car("Audi", "A8 50 L TDI quattro", 2020, "Германии", "черный", 250, 3.0, "АКПП", "седан", "", 5, true);
@@ -21,7 +21,7 @@ public class Main {
 //        System.out.println(maz);
 //        Bus liaz = new Bus("ЛиАЗ", "6113.65", 2018, "России", "желтый", 85);
 //        System.out.println(liaz);
-        Bus schoolBus = new Bus("Камаз", "6282", 10.6, new DriverBusD("Лихачев ВА", true, 2));
+        Bus schoolBus = new Bus("Камаз", "6282", 10.6, new DriverBusD("Лихачев ВА", false, 2));
         Bus maz = new Bus("МАЗ", "203", 10.8, new DriverBusD("Баринов ЕС", true, 1));
         Bus liaz = new Bus("ЛиАЗ", "6113.65", 20.0, new DriverBusD("Кириллов АО", true, 3));
         Bus mersedes = new Bus("Mercedes-Benz", "O325", 10.8, new DriverBusD("Василенко ЕА", true, 2));
@@ -57,6 +57,13 @@ public class Main {
 maz.printType();
 maz.setNumberOfSeats(Bus.numberOfSeats.SMALL);
 maz.printType();
+
+//        try {
+//            maz.passDiagnostics();
+//        } catch (Exception e) {
+//            throw new RuntimeException(e);
+//        }
+
     }
 
     public static void printInfo(Transport<?> transport) {

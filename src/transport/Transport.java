@@ -53,7 +53,7 @@ public abstract class Transport<T extends Driver> implements Competing {
 //        this.color = color;
 //        this.maxSpeed = maxSpeed;
     }
-
+public abstract void passDiagnostics() throws Exception;
     public abstract void start();
 
     public abstract void finish();

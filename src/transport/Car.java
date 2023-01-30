@@ -93,6 +93,14 @@ public class Car extends Transport<DriverCarB> implements Competing {
 //        this.tiresType = tiresType;
     }
 
+    @Override
+    public void passDiagnostics() {
+        System.out.println("авто "+Car.this.getBrand()+" "+Car.this.getModel()+" проходит диагностику");
+
+
+    }
+
+
     public Car.bodyType getBodyType() {
         return bodyType;
     }

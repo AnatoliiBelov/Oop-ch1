@@ -1,7 +1,7 @@
 package transport;
 
 public class DriverCarB extends Driver {
-    public DriverCarB(String fullName, boolean driversLicence, int driverExperience) {
+    public DriverCarB(String fullName, boolean driversLicence, int driverExperience) throws DriverCannotBeWithoutADriversLicense {
         super(fullName, driversLicence, driverExperience);
     }
 
