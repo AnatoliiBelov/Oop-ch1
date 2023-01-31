@@ -1,4 +1,16 @@
+import Driver.Driver;
+import Driver.DriverBusD;
+import Driver.DriverCarB;
+import Driver.DriverTruckС;
+import TransportExeption.DriverCannotBeWithoutADriversLicense;
+import mechanic.Mechanic;
+import mechanic.TechnicalServiceStation;
 import transport.*;
+
+
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Main {
 
@@ -54,9 +66,50 @@ public class Main {
         printInfo(man);
         printInfo(volvo);
 
-maz.printType();
-maz.setNumberOfSeats(Bus.numberOfSeats.SMALL);
-maz.printType();
+        maz.printType();
+        maz.setNumberOfSeats(Bus.numberOfSeats.SMALL);
+        maz.printType();
+        List<Transport> listOfRacers = new ArrayList<>();
+        listOfRacers.add(schoolBus);
+        listOfRacers.add(maz);
+        listOfRacers.add(liaz);
+        listOfRacers.add(mersedes);
+        listOfRacers.add(granta);
+        listOfRacers.add(a8);
+        listOfRacers.add(z8);
+        listOfRacers.add(kamaz);
+        listOfRacers.add(duf);
+        listOfRacers.add(man);
+        listOfRacers.add(volvo);
+        System.out.println(listOfRacers.get(5));
+        System.out.println(listOfRacers.toString());
+        Mechanic volodin = new Mechanic("Володин ИВ", "ABC");
+        Mechanic kovalev = new Mechanic("Ковалев КН", "BCD");
+        Mechanic ljashko = new Mechanic("Ляшко ВС", "DEF");
+        maz.addMechanic(kovalev);
+        granta.addMechanic(volodin);
+        printInfoDriverPlusMechanic(maz);
+        List <Driver> drivers=new ArrayList<>();
+        drivers.add(schoolBus.getDriver());
+        drivers.add(maz.getDriver());
+        drivers.add(liaz.getDriver());
+        drivers.add(mersedes.getDriver());
+        drivers.add(granta.getDriver());
+        drivers.add(a8.getDriver());
+        drivers.add(z8.getDriver());
+        drivers.add(kamaz.getDriver());
+        drivers.add(duf.getDriver());
+        drivers.add(man.getDriver());
+        drivers.add(volvo.getDriver());
+
+   TechnicalServiceStation tSS = new TechnicalServiceStation("СТО");
+   tSS.addTransportToQueue(a8);
+        tSS.addTransportToQueue(granta);
+        tSS.addTransportToQueue(duf);
+        tSS.addTransportToQueue(liaz);
+        tSS.carryOutInspectionOfTransport();
+
+
 
 //        try {
 //            maz.passDiagnostics();
@@ -64,9 +117,16 @@ maz.printType();
 //            throw new RuntimeException(e);
 //        }
 
+
+    }
+
+
+    public static void printInfoDriverPlusMechanic(Transport<?> transport) {
+        System.out.println("Автомобиль " + transport.getBrand() + " " + transport.getModel() + " управляется: " + transport.getDriver() + "; и обслуживается " + transport.getListOfMechanics());
+
     }
 
     public static void printInfo(Transport<?> transport) {
-        System.out.println("Водитель " + transport.getDriver().getFullName() + " управляет автомобилем " + transport.getBrand() +" "+ transport.getModel() + " и будет участвовать в заезде");
+        System.out.println("Водитель " + transport.getDriver().getFullName() + " управляет автомобилем " + transport.getBrand() + " " + transport.getModel() + " и будет участвовать в заезде");
     }
 }

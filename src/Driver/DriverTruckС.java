@@ -1,4 +1,6 @@
-package transport;
+package Driver;
+
+import TransportExeption.DriverCannotBeWithoutADriversLicense;
 
 public class DriverTruckС extends Driver {
     public DriverTruckС(String fullName, boolean driversLicence, int driverExperience) throws DriverCannotBeWithoutADriversLicense {

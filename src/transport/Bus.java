@@ -1,7 +1,10 @@
 package transport;
 
+import Driver.DriverBusD;
+import TransportExeption.DriverCannotBeWithoutADriversLicense;
+
 public class Bus extends Transport<DriverBusD> implements Competing {
-    numberOfSeats numberOfSeats;
+    private numberOfSeats numberOfSeats;
 
 
     public enum numberOfSeats {
@@ -15,11 +18,11 @@ public class Bus extends Transport<DriverBusD> implements Competing {
         AVERAGE(40, 50, "средняя (40–50)"),
         LARGE(60, 80, "большая (60–80)"),
         ESPECIALLY_LARGE(100, 120, "особо большая (100–120 мест)");
-        Integer minNumberOfSeats;
+        private final Integer minNumberOfSeats;
 
-        Integer maxNumberOfSeats;
+        private final Integer maxNumberOfSeats;
 
-        String characteristicsInRussian;
+        private final String characteristicsInRussian;
 
         numberOfSeats(Integer minNumberOfSeats, Integer maxNumberOfSeats, String characteristicsInRussian) {
             this.minNumberOfSeats = minNumberOfSeats;
@@ -60,8 +63,8 @@ public class Bus extends Transport<DriverBusD> implements Competing {
     }
 
     @Override
-    public void passDiagnostics() throws Exception {
-        throw new Exception("Автобусы не проходят диагностику");
+    public void passDiagnostics() throws DriverCannotBeWithoutADriversLicense {
+        throw new DriverCannotBeWithoutADriversLicense("Автобусы не проходят диагностику");
 
     }
 

@@ -1,10 +1,20 @@
 package transport;
 
+
+import Driver.Driver;
+import TransportExeption.DriverCannotBeWithoutADriversLicense;
+import mechanic.Mechanic;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class Transport<T extends Driver> implements Competing {
     private final String brand;
     private final String model;
     private final double engineVolume;
     public final double DEFAULT_OPTIONS_FOR_ENGINE_VOLUME = 1.5;
+    private final List<Mechanic> listOfMechanics = new ArrayList<>();
+
 
     //    private final int year;
 //    private final String contry;
@@ -12,6 +22,7 @@ public abstract class Transport<T extends Driver> implements Competing {
 //    private int maxSpeed;
     public final String DEFAULT_OPTIONS_FOR_BRAND_MODEL_COUNTRY = "default";
     private final T driver;
+
 
 //    public int DEFAULT_OPTIONS_FOR_YEAR = 2000;
 //    public int DEFAULT_OPTIONS_FOR_MAX_SPEED = 180;
@@ -52,8 +63,9 @@ public abstract class Transport<T extends Driver> implements Competing {
 //        this.contry = contry;
 //        this.color = color;
 //        this.maxSpeed = maxSpeed;
+
     }
-public abstract void passDiagnostics() throws Exception;
+public abstract void passDiagnostics() throws DriverCannotBeWithoutADriversLicense;
     public abstract void start();
 
     public abstract void finish();
@@ -70,7 +82,15 @@ public abstract void passDiagnostics() throws Exception;
     public double getEngineVolume() {
         return engineVolume;
     }
-//    public int getYear() {
+
+    public ArrayList<Mechanic> getListOfMechanics() {
+        return (ArrayList<Mechanic>) listOfMechanics;
+    }
+    public void addMechanic(Mechanic mechanic  ){
+        listOfMechanics.add(mechanic);
+
+    }
+    //    public int getYear() {
 //        return year;
 //    }
 //

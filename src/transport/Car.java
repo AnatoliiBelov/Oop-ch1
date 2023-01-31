@@ -1,8 +1,10 @@
 package transport;
 
 
+import Driver.DriverCarB;
+
 public class Car extends Transport<DriverCarB> implements Competing {
-    bodyType bodyType;
+    private bodyType bodyType;
     public enum bodyType {
         SEDAN("Седан"),
         HATCHBACK("Хетчбек"),
@@ -14,7 +16,7 @@ public class Car extends Transport<DriverCarB> implements Competing {
         VAN("Фургон"),
         MINIVAN("Минивэн");
 
-        private String bodyTypeOnRussian;
+        private final String bodyTypeOnRussian;
 
         @Override
         public String toString() {

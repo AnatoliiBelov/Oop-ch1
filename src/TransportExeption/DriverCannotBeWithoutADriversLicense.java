@@ -1,4 +1,4 @@
-package transport;
+package TransportExeption;
 
 public class DriverCannotBeWithoutADriversLicense extends Exception{
     public DriverCannotBeWithoutADriversLicense(String message) {

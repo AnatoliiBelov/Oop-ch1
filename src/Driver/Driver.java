@@ -1,4 +1,6 @@
-package transport;
+package Driver;
+
+import TransportExeption.DriverCannotBeWithoutADriversLicense;
 
 public abstract class Driver  {
     private final String fullName;
@@ -44,4 +46,10 @@ public abstract class Driver  {
     public abstract void finish();
 
     public abstract void refuel();
+
+    @Override
+    public String toString() {
+        return "Водитель " + fullName + ", опыт вождения " + driverExperience +
+                " лет";
+    }
 }

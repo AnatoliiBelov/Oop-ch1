@@ -1,20 +1,23 @@
 package transport;
 
+import Driver.DriverTruckС;
+
 public class Truck extends Transport<DriverTruckС> implements Competing {
-    tonnage tonnage;
-    public enum tonnage {
-        N1(null,3.5,"с полной массой до 3,5 тонн"),
-        N2(3.5,12.0, "с полной массой свыше 3,5 до 12 тонн"),
-        N3(12.0,null,"с полной массой свыше 12 тонн");
+    private Tonnage tonnage;
+
+    public enum Tonnage {
+        N1(null, 3.5, "с полной массой до 3,5 тонн"),
+        N2(3.5, 12.0, "с полной массой свыше 3,5 до 12 тонн"),
+        N3(12.0, null, "с полной массой свыше 12 тонн");
         //N1 (с полной массой до 3,5 тонн);
         //N2 (с полной массой свыше 3,5 до 12 тонн);
         //N3 (с полной массой свыше 12 тонн);
-Double minTonnage;
-        Double maxTonnage;
+        private final Double minTonnage;
+        private final Double maxTonnage;
 
-        String tonnageOnRussian;
+        private final String tonnageOnRussian;
 
-        tonnage(Double minTonnage, Double maxTonnage, String tonnageOnRussian) {
+        Tonnage(Double minTonnage, Double maxTonnage, String tonnageOnRussian) {
             this.minTonnage = minTonnage;
             this.maxTonnage = maxTonnage;
             this.tonnageOnRussian = tonnageOnRussian;
@@ -34,14 +37,18 @@ Double minTonnage;
 
         @Override
         public String toString() {
-            if (minTonnage!=null&&maxTonnage!=null){
-            return "Грузоподъемность: " +
-                   "от " +minTonnage+ " тонн до "+maxTonnage+" тонн";
-        }else if (minTonnage==null){return "Грузоподъемность: " +
-                   "до "+maxTonnage+" тонн";}
-            else {return "Грузоподъемность: " +
-                    "от " +minTonnage+ " тонн";}
-    }}
+            if (minTonnage != null && maxTonnage != null) {
+                return "Грузоподъемность: " +
+                        "от " + minTonnage + " тонн до " + maxTonnage + " тонн";
+            } else if (minTonnage == null) {
+                return "Грузоподъемность: " +
+                        "до " + maxTonnage + " тонн";
+            } else {
+                return "Грузоподъемность: " +
+                        "от " + minTonnage + " тонн";
+            }
+        }
+    }
 
     public Truck(String brand, String model, double engineVolume, DriverTruckС driverTruckС) {
         super(brand, model, engineVolume, driverTruckС);
@@ -49,14 +56,14 @@ Double minTonnage;
 
     @Override
     public void passDiagnostics() {
-        System.out.println("Грузовик "+Truck.this.getBrand()+" "+Truck.this.getModel()+" проходит диагностику");
+        System.out.println("Грузовик " + Truck.this.getBrand() + " " + Truck.this.getModel() + " проходит диагностику");
     }
 
-    public Truck.tonnage getTonnage() {
+    public Tonnage getTonnage() {
         return tonnage;
     }
 
-    public void setTonnage(Truck.tonnage tonnage) {
+    public void setTonnage(Tonnage tonnage) {
         this.tonnage = tonnage;
     }
 
@@ -78,10 +85,11 @@ Double minTonnage;
 
     @Override
     public void printType() {
-        if (tonnage==null){
+        if (tonnage == null) {
             System.out.println("Данных по транспортному средству недостаточно");
-        }else {
-        System.out.println(tonnage);}
+        } else {
+            System.out.println(tonnage);
+        }
     }
 
     @Override
