@@ -14,7 +14,7 @@ import java.util.List;
 
 public class Main {
 
-    public static void main(String[] args) throws DriverCannotBeWithoutADriversLicense {
+    public static void main(String[] args) {
 
 //        Car granta = new Car("Lada", "Granta", 2015, "России", "желтый", 200, 1.7, "механическая", "седан", "Н230ЕР777", 5, false);
 //        Car a8 = new Car("Audi", "A8 50 L TDI quattro", 2020, "Германии", "черный", 250, 3.0, "АКПП", "седан", "", 5, true);
@@ -33,20 +33,21 @@ public class Main {
 //        System.out.println(maz);
 //        Bus liaz = new Bus("ЛиАЗ", "6113.65", 2018, "России", "желтый", 85);
 //        System.out.println(liaz);
-        Bus schoolBus = new Bus("Камаз", "6282", 10.6, new DriverBusD("Лихачев ВА", false, 2));
-        Bus maz = new Bus("МАЗ", "203", 10.8, new DriverBusD("Баринов ЕС", true, 1));
-        Bus liaz = new Bus("ЛиАЗ", "6113.65", 20.0, new DriverBusD("Кириллов АО", true, 3));
-        Bus mersedes = new Bus("Mercedes-Benz", "O325", 10.8, new DriverBusD("Василенко ЕА", true, 2));
-        Car granta = new Car("Lada", "Granta", 1.7, new DriverCarB("Иванов АО", true, 1));
-        Car a8 = new Car("Audi", "A8 50 L TDI quattro", 3.0, new DriverCarB("Петров ОН", true, 2));
-        Car z8 = new Car("BMW", "Z8", 3.0, new DriverCarB("Сидоров СК", true, 3));
-        Car sportage = new Car("KIA", "Sportage 4-го поколения", 2.4, new DriverCarB("Клещев КВ", true, 1));
-        Truck kamaz = new Truck("КамАЗ", "4310", 11, new DriverTruckС("Максимов ЕА", true, 3));
-        Truck duf = new Truck("DAF", "45/55", 5.88, new DriverTruckС("Лесков МЕ", true, 3));
-        Truck man = new Truck("MAN", "TGS", 10.5, new DriverTruckС("Сулягин КМ", true, 3));
-        Truck volvo = new Truck("Volvo", "FM", 12.1, new DriverTruckС("Андреев НВ", true, 3));
-        printInfo(schoolBus);
+        Bus schoolBus = new Bus("Камаз", "6282", 10.6, addDriverCarToTryCatchD("Лихачев ВА", false, 2));
+        Bus maz = new Bus("МАЗ", "203", 10.8, addDriverCarToTryCatchD("Баринов ЕС", true, 1));
+        Bus liaz = new Bus("ЛиАЗ", "6113.65", 20.0, addDriverCarToTryCatchD("Кириллов АО", true, 3));
+        Bus mersedes = new Bus("Mercedes-Benz", "O325", 10.8, addDriverCarToTryCatchD("Василенко ЕА", true, 2));
+        Car granta = new Car("Lada", "Granta", 1.7, addDriverCarToTryCatchB("Иванов АО", true, 1));
+        Car a8 = new Car("Audi", "A8 50 L TDI quattro", 3.0,addDriverCarToTryCatchB("Леонов КЕ", false, 3));
+        Car z8 = new Car("BMW", "Z8", 3.0, addDriverCarToTryCatchB("Сидоров СК", true, 3));
+        Car sportage = new Car("KIA", "Sportage 4-го поколения", 2.4, addDriverCarToTryCatchB("Клещев КВ", true, 1));
+        Truck kamaz = new Truck("КамАЗ", "4310", 11, addDriverCarToTryCatchC("Максимов ЕА", true, 3));
+        Truck duf = new Truck("DAF", "45/55", 5.88, addDriverCarToTryCatchC("Лесков МЕ", true, 3));
+        Truck man = new Truck("MAN", "TGS", 10.5, addDriverCarToTryCatchC("Сулягин КМ", true, 3));
+        Truck volvo = new Truck("Volvo", "FM", 12.1, addDriverCarToTryCatchC("Андреев НВ", true, 3));
+//        printInfo(schoolBus);
         printInfo(maz);
+
 
         printInfo(liaz);
 
@@ -54,7 +55,7 @@ public class Main {
 
         printInfo(granta);
 
-        printInfo(a8);
+//        printInfo(a8);
 
         printInfo(z8);
 
@@ -89,7 +90,7 @@ public class Main {
         maz.addMechanic(kovalev);
         granta.addMechanic(volodin);
         printInfoDriverPlusMechanic(maz);
-        List <Driver> drivers=new ArrayList<>();
+        List<Driver> drivers = new ArrayList<>();
         drivers.add(schoolBus.getDriver());
         drivers.add(maz.getDriver());
         drivers.add(liaz.getDriver());
@@ -102,13 +103,12 @@ public class Main {
         drivers.add(man.getDriver());
         drivers.add(volvo.getDriver());
 
-   TechnicalServiceStation tSS = new TechnicalServiceStation("СТО");
-   tSS.addTransportToQueue(a8);
+        TechnicalServiceStation tSS = new TechnicalServiceStation("СТО");
+        tSS.addTransportToQueue(a8);
         tSS.addTransportToQueue(granta);
         tSS.addTransportToQueue(duf);
         tSS.addTransportToQueue(liaz);
         tSS.carryOutInspectionOfTransport();
-
 
 
 //        try {
@@ -124,6 +124,38 @@ public class Main {
     public static void printInfoDriverPlusMechanic(Transport<?> transport) {
         System.out.println("Автомобиль " + transport.getBrand() + " " + transport.getModel() + " управляется: " + transport.getDriver() + "; и обслуживается " + transport.getListOfMechanics());
 
+    }
+
+    public static DriverCarB addDriverCarToTryCatchB(String name, boolean driverLicence, int driverExperience) {
+        DriverCarB driver = null;
+        try {
+            driver = new DriverCarB(name, driverLicence, driverExperience);
+        } catch (DriverCannotBeWithoutADriversLicense e) {
+            System.out.println("Наймите вместо " + name + " водителя с правами!!!");
+        }
+        return driver;
+
+
+    }
+
+    public static DriverBusD addDriverCarToTryCatchD(String name, boolean driverLicence, int driverExperience) {
+        DriverBusD driver = null;
+        try {
+            driver = new DriverBusD(name, driverLicence, driverExperience);
+        } catch (DriverCannotBeWithoutADriversLicense e) {
+            System.out.println("Наймите вместо " + name + " водителя с правами!!!");
+        }
+        return driver;
+    }
+
+    public static DriverTruckС addDriverCarToTryCatchC(String name, boolean driverLicence, int driverExperience) {
+        DriverTruckС driver = null;
+        try {
+            driver = new DriverTruckС(name, driverLicence, driverExperience);
+        } catch (DriverCannotBeWithoutADriversLicense e) {
+            System.out.println("Наймите вместо " + name + " водителя с правами!!!");
+        }
+        return driver;
     }
 
     public static void printInfo(Transport<?> transport) {

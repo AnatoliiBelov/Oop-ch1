@@ -2,7 +2,7 @@ package Driver;
 
 import TransportExeption.DriverCannotBeWithoutADriversLicense;
 
-public abstract class Driver  {
+public abstract class Driver {
     private final String fullName;
     private boolean driversLicence;
     private int driverExperience;
@@ -30,16 +30,14 @@ public abstract class Driver  {
 
     public Driver(String fullName, boolean driversLicence, int driverExperience) throws DriverCannotBeWithoutADriversLicense {
 
-            this.fullName = fullName;
-        try {
-            if (!driversLicence) {
-                throw new DriverCannotBeWithoutADriversLicense("У водителя обязательно должны быть Водительские права");
-            }}catch (DriverCannotBeWithoutADriversLicense e){
-            System.out.println("Наймите вместо "+ getFullName()+" водителя с правами!!!");}
-            this.driversLicence = driversLicence;
-            this.driverExperience = driverExperience;
-
+        if (!driversLicence) {
+            throw new DriverCannotBeWithoutADriversLicense("У водителя обязательно должны быть Водительские права");
+        }
+        this.driversLicence = driversLicence;
+        this.driverExperience = driverExperience;
+        this.fullName = fullName;
     }
+
 
     public abstract void start();
 
