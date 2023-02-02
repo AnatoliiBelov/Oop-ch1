@@ -2,6 +2,8 @@ package Driver;
 
 import TransportExeption.DriverCannotBeWithoutADriversLicenseException;
 
+import java.util.Objects;
+
 public abstract class Driver {
     private final String fullName;
     private boolean driversLicence;
@@ -49,5 +51,18 @@ public abstract class Driver {
     public String toString() {
         return "Водитель " + fullName + ", опыт вождения " + driverExperience +
                 " лет";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Driver)) return false;
+        Driver driver = (Driver) o;
+        return driversLicence == driver.driversLicence && driverExperience == driver.driverExperience && Objects.equals(fullName, driver.fullName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(fullName, driversLicence, driverExperience);
     }
 }

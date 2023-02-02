@@ -9,7 +9,9 @@ import transport.*;
 
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 public class Main {
@@ -38,7 +40,7 @@ public class Main {
         Bus liaz = new Bus("ЛиАЗ", "6113.65", 20.0, addDriverCarToTryCatchD("Кириллов АО", true, 3));
         Bus mersedes = new Bus("Mercedes-Benz", "O325", 10.8, addDriverCarToTryCatchD("Василенко ЕА", true, 2));
         Car granta = new Car("Lada", "Granta", 1.7, addDriverCarToTryCatchB("Иванов АО", true, 1));
-        Car a8 = new Car("Audi", "A8 50 L TDI quattro", 3.0,addDriverCarToTryCatchB("Леонов КЕ", false, 3));
+        Car a8 = new Car("Audi", "A8 50 L TDI quattro", 3.0, addDriverCarToTryCatchB("Леонов КЕ", false, 3));
         Car z8 = new Car("BMW", "Z8", 3.0, addDriverCarToTryCatchB("Сидоров СК", true, 3));
         Car sportage = new Car("KIA", "Sportage 4-го поколения", 2.4, addDriverCarToTryCatchB("Клещев КВ", true, 1));
         Truck kamaz = new Truck("КамАЗ", "4310", 11, addDriverCarToTryCatchC("Максимов ЕА", true, 3));
@@ -90,18 +92,26 @@ public class Main {
         maz.addMechanic(kovalev);
         granta.addMechanic(volodin);
         printInfoDriverPlusMechanic(maz);
-        List<Driver> drivers = new ArrayList<>();
-        drivers.add(schoolBus.getDriver());
+        Set<Driver> drivers = new HashSet<>();
+//        drivers.add(schoolBus.getDriver());
+        drivers.add(maz.getDriver());
+        drivers.add(maz.getDriver());
+        drivers.add(maz.getDriver());
+        drivers.add(maz.getDriver());
+        drivers.add(maz.getDriver());
+        drivers.add(maz.getDriver());
+        drivers.add(maz.getDriver());
         drivers.add(maz.getDriver());
         drivers.add(liaz.getDriver());
         drivers.add(mersedes.getDriver());
         drivers.add(granta.getDriver());
-        drivers.add(a8.getDriver());
+//        drivers.add(a8.getDriver());
         drivers.add(z8.getDriver());
         drivers.add(kamaz.getDriver());
         drivers.add(duf.getDriver());
         drivers.add(man.getDriver());
         drivers.add(volvo.getDriver());
+
 
         TechnicalServiceStation tSS = new TechnicalServiceStation("СТО");
         tSS.addTransportToQueue(a8);
@@ -116,10 +126,19 @@ public class Main {
 //        } catch (Exception e) {
 //            throw new RuntimeException(e);
 //        }
-
+getDriversList(drivers);
 
     }
 
+    public static void getDriversList(Set<Driver> drivers) {
+
+        for (Driver driver : drivers
+        ) {
+
+            System.out.println(driver);
+
+        }
+    }
 
     public static void printInfoDriverPlusMechanic(Transport<?> transport) {
         System.out.println("Автомобиль " + transport.getBrand() + " " + transport.getModel() + " управляется: " + transport.getDriver() + "; и обслуживается " + transport.getListOfMechanics());
