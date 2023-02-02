@@ -2,7 +2,8 @@ package transport;
 
 
 import Driver.Driver;
-import TransportExeption.DriverCannotBeWithoutADriversLicense;
+import TransportExeption.BusNotPassDiagnosticsException;
+import TransportExeption.DriverCannotBeWithoutADriversLicenseException;
 import mechanic.Mechanic;
 
 import java.util.ArrayList;
@@ -65,7 +66,7 @@ public abstract class Transport<T extends Driver> implements Competing {
 //        this.maxSpeed = maxSpeed;
 
     }
-public abstract void passDiagnostics() throws DriverCannotBeWithoutADriversLicense;
+public abstract void passDiagnostics() throws BusNotPassDiagnosticsException;
     public abstract void start();
 
     public abstract void finish();
@@ -83,8 +84,8 @@ public abstract void passDiagnostics() throws DriverCannotBeWithoutADriversLicen
         return engineVolume;
     }
 
-    public ArrayList<Mechanic> getListOfMechanics() {
-        return (ArrayList<Mechanic>) listOfMechanics;
+    public List<Mechanic> getListOfMechanics() {
+        return listOfMechanics;
     }
     public void addMechanic(Mechanic mechanic  ){
         listOfMechanics.add(mechanic);

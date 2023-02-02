@@ -1,9 +1,9 @@
 package Driver;
 
-import TransportExeption.DriverCannotBeWithoutADriversLicense;
+import TransportExeption.DriverCannotBeWithoutADriversLicenseException;
 
 public class DriverCarB extends Driver {
-    public DriverCarB(String fullName, boolean driversLicence, int driverExperience) throws DriverCannotBeWithoutADriversLicense {
+    public DriverCarB(String fullName, boolean driversLicence, int driverExperience) throws DriverCannotBeWithoutADriversLicenseException {
         super(fullName, driversLicence, driverExperience);
     }
 

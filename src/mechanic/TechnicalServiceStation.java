@@ -23,7 +23,7 @@ public class TechnicalServiceStation {
     public void addTransportToQueue(Transport<?> transport){
         if (transport instanceof Bus){
             System.out.println("Автобусы не нуждаются в тех обслуживании и в очередь не встают!");
-        }
+            return;}
 
         queue.offer(transport);
 
@@ -37,9 +37,5 @@ public class TechnicalServiceStation {
             System.out.println("очередь пуста");
         }
 
-    }
-
-    public Queue<?> getQueue() {
-        return queue;
     }
 }

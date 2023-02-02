@@ -1,7 +1,8 @@
 package transport;
 
 import Driver.DriverBusD;
-import TransportExeption.DriverCannotBeWithoutADriversLicense;
+import TransportExeption.BusNotPassDiagnosticsException;
+import TransportExeption.DriverCannotBeWithoutADriversLicenseException;
 
 public class Bus extends Transport<DriverBusD> implements Competing {
     private numberOfSeats numberOfSeats;
@@ -63,8 +64,8 @@ public class Bus extends Transport<DriverBusD> implements Competing {
     }
 
     @Override
-    public void passDiagnostics() throws DriverCannotBeWithoutADriversLicense {
-        throw new DriverCannotBeWithoutADriversLicense("Автобусы не проходят диагностику");
+    public void passDiagnostics() throws BusNotPassDiagnosticsException {
+        throw new BusNotPassDiagnosticsException("Автобусы не проходят диагностику");
 
     }
 

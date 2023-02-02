@@ -1,6 +1,6 @@
 package Driver;
 
-import TransportExeption.DriverCannotBeWithoutADriversLicense;
+import TransportExeption.DriverCannotBeWithoutADriversLicenseException;
 
 public abstract class Driver {
     private final String fullName;
@@ -28,10 +28,10 @@ public abstract class Driver {
         this.driverExperience = driverExperience;
     }
 
-    public Driver(String fullName, boolean driversLicence, int driverExperience) throws DriverCannotBeWithoutADriversLicense {
+    public Driver(String fullName, boolean driversLicence, int driverExperience) throws DriverCannotBeWithoutADriversLicenseException {
 
         if (!driversLicence) {
-            throw new DriverCannotBeWithoutADriversLicense("У водителя обязательно должны быть Водительские права");
+            throw new DriverCannotBeWithoutADriversLicenseException("У водителя обязательно должны быть Водительские права");
         }
         this.driversLicence = driversLicence;
         this.driverExperience = driverExperience;

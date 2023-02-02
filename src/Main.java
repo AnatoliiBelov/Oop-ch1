@@ -2,7 +2,7 @@ import Driver.Driver;
 import Driver.DriverBusD;
 import Driver.DriverCarB;
 import Driver.DriverTruckС;
-import TransportExeption.DriverCannotBeWithoutADriversLicense;
+import TransportExeption.DriverCannotBeWithoutADriversLicenseException;
 import mechanic.Mechanic;
 import mechanic.TechnicalServiceStation;
 import transport.*;
@@ -130,7 +130,7 @@ public class Main {
         DriverCarB driver = null;
         try {
             driver = new DriverCarB(name, driverLicence, driverExperience);
-        } catch (DriverCannotBeWithoutADriversLicense e) {
+        } catch (DriverCannotBeWithoutADriversLicenseException e) {
             System.out.println("Наймите вместо " + name + " водителя с правами!!!");
         }
         return driver;
@@ -142,7 +142,7 @@ public class Main {
         DriverBusD driver = null;
         try {
             driver = new DriverBusD(name, driverLicence, driverExperience);
-        } catch (DriverCannotBeWithoutADriversLicense e) {
+        } catch (DriverCannotBeWithoutADriversLicenseException e) {
             System.out.println("Наймите вместо " + name + " водителя с правами!!!");
         }
         return driver;
@@ -152,7 +152,7 @@ public class Main {
         DriverTruckС driver = null;
         try {
             driver = new DriverTruckС(name, driverLicence, driverExperience);
-        } catch (DriverCannotBeWithoutADriversLicense e) {
+        } catch (DriverCannotBeWithoutADriversLicenseException e) {
             System.out.println("Наймите вместо " + name + " водителя с правами!!!");
         }
         return driver;
