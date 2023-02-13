@@ -8,10 +8,7 @@ import mechanic.TechnicalServiceStation;
 import transport.*;
 
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 
 public class Main {
@@ -95,13 +92,6 @@ public class Main {
         Set<Driver> drivers = new HashSet<>();
 //        drivers.add(schoolBus.getDriver());
         drivers.add(maz.getDriver());
-        drivers.add(maz.getDriver());
-        drivers.add(maz.getDriver());
-        drivers.add(maz.getDriver());
-        drivers.add(maz.getDriver());
-        drivers.add(maz.getDriver());
-        drivers.add(maz.getDriver());
-        drivers.add(maz.getDriver());
         drivers.add(liaz.getDriver());
         drivers.add(mersedes.getDriver());
         drivers.add(granta.getDriver());
@@ -111,6 +101,19 @@ public class Main {
         drivers.add(duf.getDriver());
         drivers.add(man.getDriver());
         drivers.add(volvo.getDriver());
+       HashMap<Transport, Mechanic> transportMechanicHashMap=new HashMap<>();
+        transportMechanicHashMap.put(maz, volodin);
+        transportMechanicHashMap.put(granta, kovalev);
+        transportMechanicHashMap.put(schoolBus, volodin);
+        transportMechanicHashMap.put(liaz, volodin);
+        transportMechanicHashMap.put(a8, volodin);
+        transportMechanicHashMap.put(z8, ljashko);
+        transportMechanicHashMap.put(sportage, kovalev);
+        transportMechanicHashMap.put(kamaz, ljashko);
+        transportMechanicHashMap.put(duf, ljashko);
+        transportMechanicHashMap.put(man, kovalev);
+        transportMechanicHashMap.put(volvo, ljashko);
+
 
 
         TechnicalServiceStation tSS = new TechnicalServiceStation("СТО");
@@ -127,7 +130,7 @@ public class Main {
 //            throw new RuntimeException(e);
 //        }
 getDriversList(drivers);
-
+        System.out.println(transportMechanicHashMap);
     }
 
     public static void getDriversList(Set<Driver> drivers) {
